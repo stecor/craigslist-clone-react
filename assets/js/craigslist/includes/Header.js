@@ -13,7 +13,9 @@ export default class Header extends Component {
   };
   render() {
     return (
+    <div className="container">
       <header>
+
         <div className={"left-menu"}>
           <div className={"logo"}>Craigslist</div>
           <div className={"city"}>
@@ -28,7 +30,9 @@ export default class Header extends Component {
           </div>
           <div className={"post-btn"}>post to classifieds</div>
         </div>
+
       </header>
+    </div>  
     );
   }
 }

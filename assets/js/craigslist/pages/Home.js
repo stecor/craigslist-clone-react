@@ -13,13 +13,22 @@ export default class Home extends Component {
     console.log("swag");
   };
 
-  loopCategories = () =>{
-    let testArray = [1,2,3,4,5,6,7]
 
-    return testArray.map(() => {
+  loopTags =() => {
+    let testTags = ['a','s','d','f','g','h','j'];
+    return testTags.map((item, index) => {
+      return(<div key={index} className="tag">Apple macbook</div>);
+    })
+  }
+
+  loopCategories = () =>{
+    let testArray = [1,2,3,4,5,6,7];
+
+    return testArray.map((item,index) => {
 
       return(
-        <div className="categories">
+        <div className="categories" key={index}>
+
           <div className="title">Community</div>
 
             <div className="group-links">
@@ -45,13 +54,24 @@ export default class Home extends Component {
 
   render() {
     return (
-      <div>
-        <h1>Connecting People <br/> Everywhere </h1>
+      <div className="home">
+      <div className="container">
+        <h1>Connecting People <br/> Everywhere  :)</h1>
         <section className={'links'}>
 
           {this.loopCategories()}
 
         </section>
+        <section className={"trending"}>
+          <input type="text" name="search" className="search"/>
+          <div className="title">
+            <i className="far fa-clock"></i>Trending Now
+          </div>
+          <div className="trending-tags">
+              {this.loopTags()}
+          </div>
+        </section>
+        </div>
       </div>
     );
   }

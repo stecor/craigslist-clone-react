@@ -1,5 +1,6 @@
 @import url( 'https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700');
 @import "reset";
+@import "home";
 
 
 *{
@@ -33,12 +34,14 @@ header{
       font-size: 2rem;
       justify-content: center;
       align-items: center;
+      font-weight: 400;
     }
     .city{
       display: flex;
       justify-content: center;
       align-items: center;
       padding: 15px 20px;
+      font-weight: 200;
     }
   }
 
@@ -55,6 +58,7 @@ header{
       justify-content: center;
       align-items: center;
       padding: 15px 20px;
+      font-weight: 200;
     }
 
     .post-btn{
@@ -66,4 +70,9 @@ header{
     }
   }
 
+}
+
+.container{
+  max-width: 1300px;
+  margin: 0 auto;
 }
