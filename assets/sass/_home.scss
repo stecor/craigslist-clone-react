@@ -51,10 +51,26 @@
 
       .search{
         width: 100%;
-        border: 1px solid #000;
-        padding: 17px;
-
+        border: none;
+        padding: 16px;
+        font-size: 1.3rem;
+        font-weight: 600;
+        padding-left:30px;
       }
+
+      .search::-webkit-input-placeholder{
+        color: #c0c0c0;
+        font-weight: 100;
+        font-style: italic;
+        background-image:url(https://cdn1.iconfinder.com/data/icons/hawcons/32/698956-icon-111-search-128.png);
+        background-repeat:no-repeat;
+        background-position:6px;
+        background-size: 30px;
+        background-position: right;
+      }
+
+
+
 
       .title{
         font-size: .9rem;

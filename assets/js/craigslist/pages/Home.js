@@ -63,7 +63,7 @@ export default class Home extends Component {
 
         </section>
         <section className={"trending"}>
-          <input type="text" name="search" className="search"/>
+          <input type="text" name="search" className="search" placeholder="Search classifieds, Housing, Discussions, Personals..."/>  
           <div className="title">
             <i className="far fa-clock"></i>Trending Now
           </div>

@@ -1,0 +1,130 @@
+.listings-page{
+  background: #fff;
+
+  #filter{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    padding: 50px 20px;
+
+
+  }
+
+  .form-group{
+    display: flex;
+    flex-direction: column;
+
+    label{
+      font-size: 0.8rem;
+      font-weight: 500;
+      margin-bottom: 0.8rem;
+    }
+
+    select{
+      background: #fff;
+      border-radius: 5px;
+      padding: 10px;
+      color: #1b1b1b;
+      min-width: 100px;
+      font-size: 1.3rem;
+      border: 2px solid #ADBED2;
+      margin-right: 20px;
+    }
+
+    &.button{
+      display: flex;
+      flex-direction: row;
+      align-items: flex-end;
+
+    }
+
+    .reset-btn{
+      color: #2A7DDD;
+      background: #F7F8FA;
+      cursor: pointer;
+      padding:10px 20px;
+      &:hover{
+        background: #F7F8FA;
+      }
+    }
+
+    .primary-btn{
+      color: #fff;
+      cursor: pointer;
+      padding-left: 40px;
+      padding-right: 40px;
+      background: #2A7DDD;
+    }
+
+    .primary-btn,
+    .reset-btn{
+      border-radius: 3px;
+      cursor: pointer;
+      padding: 10px 20px;
+
+    }
+  }
+
+  #list-view{
+    background: #E8E8E8;
+    padding: 20px;
+    .white-box{
+      background: #fff;
+      padding: 20px;
+    }
+
+    .change-view{
+      display: flex;
+      flex-direction: row;
+    }
+    .all-items{
+      padding: 20px 0px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-gap: 20px 20px;
+
+      .item{
+        box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.35);
+        border-radius: 3px;
+        overflow: hidden;
+        .image{
+          background: url("https://www.gannett-cdn.com/-mm-/3db68d7c7efa34d3edfc911cec4c54ab5d49a091/c=919-719-2540-1938&r=x408&c=540x405/local/-/media/2018/02/19/USATODAY/USATODAY/636546521086794560-DodgeJourney18.jpg");
+          height: 250px;
+          background-size: cover;
+          background-position: center center;
+          background-repeat: no-repeat;
+          position: relative;
+          padding: 10px;
+        }
+        .price{
+          background: #fff;
+          position: absolute;
+          padding: 5px 10px;
+          color: green;
+          border-radius: 3px;
+        }
+      }
+      .details{
+        padding: 10px;
+
+        h5{
+          font-size: .9rem;
+          color:#27292d;
+          line-height: 1.5;
+          margin-bottom: 5px;
+          text-transform: capitalize;
+          .fa-star{
+            position: absolute;
+            right: 0
+          }
+        }
+
+        h6{
+          font-size: .7rem;
+          color:#565d68;
+          text-transform: capitalize;
+        }
+      }
+    }
+  }
+}
