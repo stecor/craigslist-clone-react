@@ -5,7 +5,7 @@ import Header from './includes/Header';
 import Home from './pages/Home';
 import Listings from './pages/Listings';
 import Category from './pages/Category';
-import Item from './pages/Item';
+import Details from './pages/Details';
 
 
 
@@ -29,7 +29,7 @@ export default class App extends Component {
           <Route exact path="/:city" component={Home}/>
           <Route exact path="/:city/:category" component={Category}/>
           <Route exact path="/:city/:category/:listings" component={Listings}/>
-          <Route exact path="/:city/:category/:listings/:item" component={Item}/>
+          <Route exact path="/:city/:category/:listings/:details" component={Details}/>
 
         </div>
       </Router>

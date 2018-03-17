@@ -19,7 +19,8 @@ export default class Listings extends Component {
             image
           </div>
           <div className="details">
-            <h5>2011 Bmw m3<i className="far fa-star"></i></h5>
+            <h5>2011 Bmw m3</h5><i className="far fa-star" ></i><i className="material-icons ma-clear">&#xE14C;</i>
+            <h5>Gray on sale</h5>
             <h6>Ridgewood</h6>
           </div>
         </div>

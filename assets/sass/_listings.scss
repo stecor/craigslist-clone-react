@@ -1,13 +1,16 @@
 .listings-page{
   background: #fff;
 
+  header{
+    background: #fff;
+  }
+
   #filter{
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
     padding: 50px 20px;
-
-
+    border-top: 2px solid gray;
   }
 
   .form-group{
@@ -15,34 +18,33 @@
     flex-direction: column;
 
     label{
-      font-size: 0.8rem;
+      font-size: 0.7rem;
       font-weight: 500;
       margin-bottom: 0.8rem;
+      text-transform: uppercase;
     }
 
     select{
       background: #fff;
-      border-radius: 5px;
-      padding: 10px;
-      color: #1b1b1b;
+      height: 28px;
+      color: #696969;
       min-width: 100px;
-      font-size: 1.3rem;
-      border: 2px solid #ADBED2;
+      font-size: 0.9rem;
+      border: 2px solid #a9a9a9;
       margin-right: 20px;
+
     }
 
     &.button{
       display: flex;
       flex-direction: row;
       align-items: flex-end;
-
     }
 
     .reset-btn{
       color: #2A7DDD;
       background: #F7F8FA;
       cursor: pointer;
-      padding:10px 20px;
       &:hover{
         background: #F7F8FA;
       }
@@ -60,7 +62,7 @@
     .reset-btn{
       border-radius: 3px;
       cursor: pointer;
-      padding: 10px 20px;
+      padding: 5px 20px;
 
     }
   }
@@ -101,11 +103,12 @@
           position: absolute;
           padding: 5px 10px;
           color: green;
-          border-radius: 3px;
+          border-radius: 2px;
         }
       }
       .details{
         padding: 10px;
+        position: relative;
 
         h5{
           font-size: .9rem;
@@ -113,9 +116,32 @@
           line-height: 1.5;
           margin-bottom: 5px;
           text-transform: capitalize;
-          .fa-star{
-            position: absolute;
-            right: 0
+        }
+
+        .fa-star{
+          position: absolute;
+          right: 10px;
+          top:10px;
+          color:gray;
+          &:hover{
+            color: red;
+            cursor: pointer;
+          }
+          &.active{
+            color: red;
+          }
+        }
+
+
+        .ma-clear{
+          position: absolute;
+          font-size: 18px;
+          right: 10px;
+          bottom: 10px;
+          color: gray;
+          &:hover{
+            color: #000;
+            cursor: pointer;
           }
         }
 
