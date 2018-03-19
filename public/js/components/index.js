@@ -22,7 +22,7 @@ var _reactDom2 = _interopRequireDefault(_reactDom);
 
 var _reactRouterDom = __webpack_require__(243);
 
-var _Header = __webpack_require__(119);
+var _Header = __webpack_require__(118);
 
 var _Header2 = _interopRequireDefault(_Header);
 
@@ -99,32 +99,6 @@ exports.default = App;
 "use strict";
 
 
-var _react = __webpack_require__(5);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactDom = __webpack_require__(16);
-
-var _reactDom2 = _interopRequireDefault(_reactDom);
-
-var _App = __webpack_require__(116);
-
-var _App2 = _interopRequireDefault(_App);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var app = document.getElementById('app');
-
-_reactDom2.default.render(_react2.default.createElement(_App2.default, null), app);
-
-/***/ }),
-
-/***/ 119:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -195,7 +169,7 @@ var Header = function (_Component) {
             _react2.default.createElement(
               "div",
               { className: "user-img" },
-              _react2.default.createElement("img", { src: "https://png.icons8.com/ios/2x/user-male-circle-filled.png", alt: "" })
+              _react2.default.createElement("img", { src: "https://png.icons8.com/ios/2x/user-male-circle-filled.png", alt: "user" })
             ),
             _react2.default.createElement(
               "div",
@@ -218,6 +192,30 @@ var Header = function (_Component) {
 }(_react.Component);
 
 exports.default = Header;
+
+/***/ }),
+
+/***/ 119:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _react = __webpack_require__(5);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactDom = __webpack_require__(16);
+
+var _reactDom2 = _interopRequireDefault(_reactDom);
+
+var _App = __webpack_require__(116);
+
+var _App2 = _interopRequireDefault(_App);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+_reactDom2.default.render(_react2.default.createElement(_App2.default, null), document.getElementById('root'));
 
 /***/ }),
 
@@ -343,8 +341,217 @@ var Details = function (_Component) {
         _react2.default.createElement(
           "div",
           { className: "container" },
-          "this item is ",
-          match.params.item
+          _react2.default.createElement(
+            "div",
+            { className: "white-box" },
+            _react2.default.createElement(
+              "section",
+              { className: "submenu" },
+              _react2.default.createElement(
+                "div",
+                { className: "direction" },
+                _react2.default.createElement(
+                  "a",
+                  { href: "#1", className: "next" },
+                  "Prev"
+                ),
+                _react2.default.createElement(
+                  "a",
+                  { href: "#1", className: "next" },
+                  "Next"
+                )
+              ),
+              _react2.default.createElement(
+                "nav",
+                { className: "sub-links" },
+                _react2.default.createElement(
+                  "a",
+                  { href: "#1" },
+                  "More Ads by User"
+                ),
+                _react2.default.createElement(
+                  "a",
+                  { href: "#1" },
+                  "Print"
+                ),
+                _react2.default.createElement(
+                  "a",
+                  { href: "#1" },
+                  "Share"
+                ),
+                _react2.default.createElement(
+                  "a",
+                  { href: "#1" },
+                  "Contact Seller"
+                )
+              )
+            ),
+            _react2.default.createElement(
+              "section",
+              { className: "content-area" },
+              _react2.default.createElement(
+                "div",
+                { className: "media-column" },
+                _react2.default.createElement(
+                  "div",
+                  { className: "gallery" },
+                  _react2.default.createElement(
+                    "div",
+                    { className: "slider" },
+                    _react2.default.createElement(
+                      "div",
+                      { className: "main-image" },
+                      _react2.default.createElement("div", { className: "arrows left-arrow" }),
+                      _react2.default.createElement("div", { className: "arrows right-arrow" }),
+                      _react2.default.createElement("div", { className: "image-1", style: { "backgroundImage": "url('https://www.technobezz.com/life/wp-content/uploads/2017/01/pexels-photo-170811.jpg')" } })
+                    )
+                  ),
+                  _react2.default.createElement(
+                    "div",
+                    { className: "thumbnails" },
+                    _react2.default.createElement("div", { className: "thumb-img", style: { "backgroundImage": "url('https://www.technobezz.com/life/wp-content/uploads/2017/01/pexels-photo-170811.jpg')" } }),
+                    _react2.default.createElement("div", { className: "thumb-img", style: { "backgroundImage": "url('https://www.technobezz.com/life/wp-content/uploads/2017/01/pexels-photo-170811.jpg')" } }),
+                    _react2.default.createElement("div", { className: "thumb-img", style: { "backgroundImage": "url('https://www.technobezz.com/life/wp-content/uploads/2017/01/pexels-photo-170811.jpg')" } }),
+                    _react2.default.createElement("div", { className: "thumb-img", style: { "backgroundImage": "url('https://www.technobezz.com/life/wp-content/uploads/2017/01/pexels-photo-170811.jpg')" } }),
+                    _react2.default.createElement("div", { className: "thumb-img", style: { "backgroundImage": "url('https://www.technobezz.com/life/wp-content/uploads/2017/01/pexels-photo-170811.jpg')" } }),
+                    _react2.default.createElement("div", { className: "thumb-img", style: { "backgroundImage": "url('https://www.technobezz.com/life/wp-content/uploads/2017/01/pexels-photo-170811.jpg')" } }),
+                    _react2.default.createElement("div", { className: "thumb-img", style: { "backgroundImage": "url('https://www.technobezz.com/life/wp-content/uploads/2017/01/pexels-photo-170811.jpg')" } })
+                  )
+                )
+              ),
+              _react2.default.createElement(
+                "div",
+                { className: "details-column" },
+                _react2.default.createElement(
+                  "div",
+                  { className: "date" },
+                  "Posted: Feb 28th"
+                ),
+                _react2.default.createElement(
+                  "h3",
+                  { className: "title" },
+                  "Black 2016 BMW"
+                ),
+                _react2.default.createElement(
+                  "h4",
+                  { className: "price" },
+                  "$46,298"
+                ),
+                _react2.default.createElement(
+                  "div",
+                  { className: "more-details" },
+                  _react2.default.createElement(
+                    "div",
+                    { className: "info" },
+                    _react2.default.createElement(
+                      "label",
+                      { htmlFor: "" },
+                      "Vin"
+                    ),
+                    _react2.default.createElement(
+                      "h5",
+                      null,
+                      "rwe7r9e87787ew87wer7e"
+                    )
+                  ),
+                  _react2.default.createElement(
+                    "div",
+                    { className: "info" },
+                    _react2.default.createElement(
+                      "label",
+                      { htmlFor: "" },
+                      "Mileage"
+                    ),
+                    _react2.default.createElement(
+                      "h5",
+                      null,
+                      "345660"
+                    )
+                  ),
+                  _react2.default.createElement(
+                    "div",
+                    { className: "info" },
+                    _react2.default.createElement(
+                      "label",
+                      { htmlFor: "" },
+                      "Transmition"
+                    ),
+                    _react2.default.createElement(
+                      "h5",
+                      null,
+                      "Manual"
+                    )
+                  ),
+                  _react2.default.createElement(
+                    "div",
+                    { className: "info" },
+                    _react2.default.createElement(
+                      "label",
+                      { htmlFor: "" },
+                      "Vin"
+                    ),
+                    _react2.default.createElement(
+                      "h5",
+                      null,
+                      "rwe7r9e87787ew87wer7e"
+                    )
+                  ),
+                  _react2.default.createElement(
+                    "div",
+                    { className: "info" },
+                    _react2.default.createElement(
+                      "label",
+                      { htmlFor: "" },
+                      "Mileage"
+                    ),
+                    _react2.default.createElement(
+                      "h5",
+                      null,
+                      "345660"
+                    )
+                  ),
+                  _react2.default.createElement(
+                    "div",
+                    { className: "info" },
+                    _react2.default.createElement(
+                      "label",
+                      { htmlFor: "" },
+                      "Transmition"
+                    ),
+                    _react2.default.createElement(
+                      "h5",
+                      null,
+                      "Manual"
+                    )
+                  )
+                ),
+                _react2.default.createElement(
+                  "div",
+                  { className: "description" },
+                  _react2.default.createElement(
+                    "label",
+                    { htmlFor: "" },
+                    "Description"
+                  ),
+                  _react2.default.createElement(
+                    "p",
+                    null,
+                    "Lorem ipsum dolor amet everyday carry brunch hexagon adaptogen. Enamel pin shabby chic everyday carry pug meggings locavore blog shoreditch seitan. Copper mug everyday carry pitchfork fam hexagon tote bag chartreuse air plant taiyaki. Ethical salvia taiyaki, butcher selfies freegan vape pug microdosing blog copper mug ramps bitters adaptogen. Tbh schlitz banh mi, +1 pitchfork cliche ennui. Paleo tattooed palo santo try-hard messenger bag skateboard meh wayfarers."
+                  ),
+                  _react2.default.createElement(
+                    "p",
+                    null,
+                    "Lorem ipsum dolor amet everyday carry brunch hexagon adaptogen. Enamel pin shabby chic everyday carry pug meggings locavore blog shoreditch seitan. Copper mug everyday carry pitchfork fam hexagon tote bag chartreuse air plant taiyaki. Ethical salvia taiyaki, butcher selfies freegan vape pug microdosing blog copper mug ramps bitters adaptogen. Tbh schlitz banh mi, +1 pitchfork cliche ennui. Paleo tattooed palo santo try-hard messenger bag skateboard meh wayfarers."
+                  ),
+                  _react2.default.createElement(
+                    "p",
+                    null,
+                    "Lorem ipsum dolor amet everyday carry brunch hexagon adaptogen. Enamel pin shabby chic everyday carry pug meggings locavore blog shoreditch seitan. Copper mug everyday carry pitchfork fam hexagon tote bag chartreuse air plant taiyaki. Ethical salvia taiyaki, butcher selfies freegan vape pug microdosing blog copper mug ramps bitters adaptogen. Tbh schlitz banh mi, +1 pitchfork cliche ennui. Paleo tattooed palo santo try-hard messenger bag skateboard meh wayfarers."
+                  )
+                )
+              )
+            )
+          )
         )
       );
     }
@@ -815,4 +1022,4 @@ exports.default = Listings;
 
 /***/ })
 
-},[118]);
+},[119]);

@@ -1,0 +1,152 @@
+.details-page{
+  background: #E8E8E8;
+  padding:  20px 20px;
+
+  .white-box{
+    background: #fff;
+    padding:  20px;
+  }
+
+  .submenu{
+    display: flex;
+    justify-content: space-between;
+
+    a {
+      color:#2782F2;
+      padding: 20px;
+      text-decoration: none;
+    }
+
+    .direction{
+      display: flex;
+      flex-direction: row;
+
+    }
+    .sub-links{
+      display: flex;
+      flex-direction: row;
+
+    }
+
+  }
+
+  .content-area{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    grid-gap: 20px;
+
+    .media-column{
+
+        .gallery{
+
+          .slider{
+            .main-image{
+              position: relative;
+              .arrows{
+                top:0;
+                bottom: 0;
+                padding: 0 15px;
+                height: 100%;
+                position: absolute;
+                background: rgba(0,0,0, .5);
+                display: flex;
+                cursor: pointer;
+                &.left-arrow{
+                  left: 0;
+                  background-image: url("../public/img/chevron_left.png");
+                  background-size: 20px;
+                  background-position: center;
+                  background-repeat: no-repeat;
+
+                }
+                &.right-arrow{
+                  right: 0;
+                  background-image: url("../public/img/chevron_right.png");
+                  background-size: 20px;
+                  background-position: center;
+                  background-repeat: no-repeat;
+
+                }
+              }
+
+              .image-1{
+                width:100%;
+                height: 400px;
+                background-size: cover;
+                background-position: center center;
+                background-repeat: no-repeat;
+              }
+
+            }
+
+          }
+        }
+
+        .thumbnails{
+          display: grid;
+          grid-template-columns: repeat(6, 1fr);
+          grid-gap: 3px;
+
+          .thumb-img{
+            width:100px;
+            height: 100px;
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+          }
+        }
+      }
+    }
+
+    .details-column{
+      .date{
+        font-size: .8rem;
+        color: #424242;
+        margin-bottom: 15px;
+      }
+      .title{
+        font-size: 1.5rem;
+        font-weight: 400;
+        margin-bottom: 8px;
+      }
+      .price{
+        font-size: 1.2rem;
+        color: #5ea909;
+        margin-bottom: 30px;
+      }
+
+      label{
+        font-weight: 700;
+        font-size: .7rem;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+        display: block;
+      }
+
+      .more-details{
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+        grid-gap: 15px;
+        padding-bottom: 30px;
+        margin-bottom: 30px;
+        border-bottom: 2px solid #e8e8e8;
+        .info{
+
+          h5{
+            font-size: .8rem;
+            font-weight: 300;
+            text-transform: capitalize;
+          }
+        }
+      }
+
+      .description{
+        p{
+          line-height: 1.5;
+          font-size: 0.9rem;
+          color: #424242;
+          margin-bottom: 1.5rem;
+        }
+      }
+    }
+  }

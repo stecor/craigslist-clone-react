@@ -24,7 +24,7 @@ export default class Header extends Component {
         </div>
 
         <div className={"right-menu"}>
-          <div className={"user-img"}><img src="https://png.icons8.com/ios/2x/user-male-circle-filled.png" alt=""/></div>
+          <div className={"user-img"}><img src="https://png.icons8.com/ios/2x/user-male-circle-filled.png" alt="user"/></div>
           <div className={"user-dropdown"}>
             my account <i className={"fas fa-chevron-down"} />
           </div>
