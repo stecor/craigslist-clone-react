@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
+import Gallery from "./components/Gallery"
 
 export default class Details extends Component {
   constructor() {
@@ -26,27 +27,10 @@ export default class Details extends Component {
               <a href="#1">Contact Seller</a>
             </nav>
           </section>
+
           <section className="content-area">
             <div className="media-column">
-              <div className="gallery">
-                <div className="slider">
-                  <div className="main-image">
-                    <div className="arrows left-arrow"></div>
-                    <div className="arrows right-arrow"></div>
-                    <div className="image-1"  style={{"backgroundImage":"url('https://www.technobezz.com/life/wp-content/uploads/2017/01/pexels-photo-170811.jpg')"}}></div>
-                  </div>
-                </div>
-                <div className="thumbnails">
-                  <div className="thumb-img" style={{"backgroundImage":"url('https://www.technobezz.com/life/wp-content/uploads/2017/01/pexels-photo-170811.jpg')"}}></div>
-                  <div className="thumb-img" style={{"backgroundImage":"url('https://www.technobezz.com/life/wp-content/uploads/2017/01/pexels-photo-170811.jpg')"}}></div>
-                  <div className="thumb-img" style={{"backgroundImage":"url('https://www.technobezz.com/life/wp-content/uploads/2017/01/pexels-photo-170811.jpg')"}}></div>
-                  <div className="thumb-img" style={{"backgroundImage":"url('https://www.technobezz.com/life/wp-content/uploads/2017/01/pexels-photo-170811.jpg')"}}></div>
-                  <div className="thumb-img" style={{"backgroundImage":"url('https://www.technobezz.com/life/wp-content/uploads/2017/01/pexels-photo-170811.jpg')"}}></div>
-                  <div className="thumb-img" style={{"backgroundImage":"url('https://www.technobezz.com/life/wp-content/uploads/2017/01/pexels-photo-170811.jpg')"}}></div>
-                  <div className="thumb-img" style={{"backgroundImage":"url('https://www.technobezz.com/life/wp-content/uploads/2017/01/pexels-photo-170811.jpg')"}}></div>
-                </div>
-
-              </div>
+              <Gallery />
             </div>
             <div className="details-column">
               <div className="date">Posted: Feb 28th</div>

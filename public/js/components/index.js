@@ -16,11 +16,11 @@ var _react = __webpack_require__(5);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = __webpack_require__(16);
+var _reactDom = __webpack_require__(14);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _reactRouterDom = __webpack_require__(243);
+var _reactRouterDom = __webpack_require__(244);
 
 var _Header = __webpack_require__(118);
 
@@ -109,7 +109,7 @@ var _react = __webpack_require__(5);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = __webpack_require__(16);
+var _reactDom = __webpack_require__(14);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
@@ -205,7 +205,7 @@ var _react = __webpack_require__(5);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = __webpack_require__(16);
+var _reactDom = __webpack_require__(14);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
@@ -235,7 +235,7 @@ var _react = __webpack_require__(5);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = __webpack_require__(16);
+var _reactDom = __webpack_require__(14);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
@@ -303,9 +303,13 @@ var _react = __webpack_require__(5);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = __webpack_require__(16);
+var _reactDom = __webpack_require__(14);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
+
+var _Gallery = __webpack_require__(124);
+
+var _Gallery2 = _interopRequireDefault(_Gallery);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -392,32 +396,7 @@ var Details = function (_Component) {
               _react2.default.createElement(
                 "div",
                 { className: "media-column" },
-                _react2.default.createElement(
-                  "div",
-                  { className: "gallery" },
-                  _react2.default.createElement(
-                    "div",
-                    { className: "slider" },
-                    _react2.default.createElement(
-                      "div",
-                      { className: "main-image" },
-                      _react2.default.createElement("div", { className: "arrows left-arrow" }),
-                      _react2.default.createElement("div", { className: "arrows right-arrow" }),
-                      _react2.default.createElement("div", { className: "image-1", style: { "backgroundImage": "url('https://www.technobezz.com/life/wp-content/uploads/2017/01/pexels-photo-170811.jpg')" } })
-                    )
-                  ),
-                  _react2.default.createElement(
-                    "div",
-                    { className: "thumbnails" },
-                    _react2.default.createElement("div", { className: "thumb-img", style: { "backgroundImage": "url('https://www.technobezz.com/life/wp-content/uploads/2017/01/pexels-photo-170811.jpg')" } }),
-                    _react2.default.createElement("div", { className: "thumb-img", style: { "backgroundImage": "url('https://www.technobezz.com/life/wp-content/uploads/2017/01/pexels-photo-170811.jpg')" } }),
-                    _react2.default.createElement("div", { className: "thumb-img", style: { "backgroundImage": "url('https://www.technobezz.com/life/wp-content/uploads/2017/01/pexels-photo-170811.jpg')" } }),
-                    _react2.default.createElement("div", { className: "thumb-img", style: { "backgroundImage": "url('https://www.technobezz.com/life/wp-content/uploads/2017/01/pexels-photo-170811.jpg')" } }),
-                    _react2.default.createElement("div", { className: "thumb-img", style: { "backgroundImage": "url('https://www.technobezz.com/life/wp-content/uploads/2017/01/pexels-photo-170811.jpg')" } }),
-                    _react2.default.createElement("div", { className: "thumb-img", style: { "backgroundImage": "url('https://www.technobezz.com/life/wp-content/uploads/2017/01/pexels-photo-170811.jpg')" } }),
-                    _react2.default.createElement("div", { className: "thumb-img", style: { "backgroundImage": "url('https://www.technobezz.com/life/wp-content/uploads/2017/01/pexels-photo-170811.jpg')" } })
-                  )
-                )
+                _react2.default.createElement(_Gallery2.default, null)
               ),
               _react2.default.createElement(
                 "div",
@@ -580,7 +559,7 @@ var _react = __webpack_require__(5);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = __webpack_require__(16);
+var _reactDom = __webpack_require__(14);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
@@ -765,7 +744,7 @@ var _react = __webpack_require__(5);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = __webpack_require__(16);
+var _reactDom = __webpack_require__(14);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
@@ -1019,6 +998,131 @@ var Listings = function (_Component) {
 }(_react.Component);
 
 exports.default = Listings;
+
+/***/ }),
+
+/***/ 124:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(5);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactDom = __webpack_require__(14);
+
+var _reactDom2 = _interopRequireDefault(_reactDom);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Gallery = function (_Component) {
+  _inherits(Gallery, _Component);
+
+  function Gallery() {
+    _classCallCheck(this, Gallery);
+
+    var _this = _possibleConstructorReturn(this, (Gallery.__proto__ || Object.getPrototypeOf(Gallery)).call(this));
+
+    _this.allImgsLoop = function () {
+
+      return _this.state.allImgs.map(function (item, index) {
+        return _react2.default.createElement("div", { className: "thumb-img", onClick: _this.clickedThumb.bind(null, index), key: index, style: { "backgroundImage": "url('" + item + "')" } });
+      });
+    };
+
+    _this.nextBtn = function () {
+      if (_this.state.currentIndex < _this.state.allImgs.length - 1) {
+        _this.setState({
+          currentIndex: _this.state.currentIndex + 1
+        });
+      }
+    };
+
+    _this.prevBtn = function () {
+      if (_this.state.currentIndex > 0) {
+        _this.setState({
+
+          currentIndex: _this.state.currentIndex - 1
+        });
+      }
+    };
+
+    _this.clickedThumb = function (index) {
+
+      _this.setState({
+
+        currentIndex: index
+      });
+    };
+
+    _this.state = {
+      allImgs: '',
+      currentImg: '',
+      currentIndex: 0
+    };
+    return _this;
+  }
+
+  _createClass(Gallery, [{
+    key: "componentWillMount",
+    value: function componentWillMount() {
+      var allImgs = ['https://images.craigslist.org/00v0v_dN0M2PZVWg4_600x450.jpg', 'https://images.craigslist.org/00O0O_8VQYWDTTKVb_600x450.jpg', 'https://images.craigslist.org/00S0S_fQGpyumt2AV_600x450.jpg', 'https://images.craigslist.org/00L0L_fxUrryiIHjf_600x450.jpg', 'https://images.craigslist.org/00M0M_56TQo3WW1Cn_600x450.jpg', 'https://images.craigslist.org/00606_f2hL4mPWjXA_600x450.jpg'];
+
+      this.setState({
+        allImgs: allImgs,
+        currentImg: allImgs[this.state.currentIndex]
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _props = this.props,
+          match = _props.match,
+          location = _props.location,
+          history = _props.history;
+
+
+      return _react2.default.createElement(
+        "div",
+        { className: "gallery" },
+        _react2.default.createElement(
+          "div",
+          { className: "slider" },
+          _react2.default.createElement(
+            "div",
+            { className: "main-image" },
+            _react2.default.createElement("div", { className: "arrows left-arrow", onClick: this.prevBtn }),
+            _react2.default.createElement("div", { className: "arrows right-arrow", onClick: this.nextBtn }),
+            _react2.default.createElement("div", { className: "image-1", style: { "backgroundImage": "url('" + this.state.allImgs[this.state.currentIndex] + "')" } })
+          )
+        ),
+        _react2.default.createElement(
+          "div",
+          { className: "thumbnails" },
+          this.allImgsLoop()
+        )
+      );
+    }
+  }]);
+
+  return Gallery;
+}(_react.Component);
+
+exports.default = Gallery;
 
 /***/ })
 
