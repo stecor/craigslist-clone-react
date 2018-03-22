@@ -1,6 +1,6 @@
 webpackJsonp([0],{
 
-/***/ 123:
+/***/ 124:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -75,7 +75,7 @@ var App = function (_Component) {
         _react2.default.createElement(
           'div',
           null,
-          _react2.default.createElement(_Header2.default, null),
+          _react2.default.createElement(_reactRouterDom.Route, { path: '/:city', component: _Header2.default }),
           _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _Home2.default }),
           _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/:city', component: _Home2.default }),
           _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/:city/:category', component: _Category2.default }),
@@ -113,6 +113,10 @@ var _reactDom = __webpack_require__(15);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
+var _axios = __webpack_require__(69);
+
+var _axios2 = _interopRequireDefault(_axios);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -129,17 +133,72 @@ var Header = function (_Component) {
 
     var _this = _possibleConstructorReturn(this, (Header.__proto__ || Object.getPrototypeOf(Header)).call(this));
 
-    _this.clickedBtn = function () {
-      console.log("swag");
+    _this.clickedCityDropdown = function () {
+      _this.setState({
+        cityDropdown: !_this.state.cityDropdown
+      });
+    };
+
+    _this.selectCity = function (city) {
+      _this.setState({
+        selectedCity: city
+      }, function () {
+
+        var city = _this.state.citiesData.filter(function (item) {
+          return item.title == _this.state.selectedCity;
+        });
+        var _this$props = _this.props,
+            match = _this$props.match,
+            history = _this$props.history;
+
+
+        history.push("/" + city[0].slug);
+      });
+    };
+
+    _this.loopCities = function () {
+      var self = _this;
+      return _this.state.citiesData.map(function (item, index) {
+        return _react2.default.createElement(
+          "li",
+          { key: index, onClick: _this.selectCity.bind(null, item.title) },
+          item.title
+        );
+      });
     };
 
     _this.state = {
-      name: "Joe"
+      cityDropdown: false,
+      selectedCity: 'New York City',
+      citiesData: []
     };
     return _this;
   }
 
   _createClass(Header, [{
+    key: "componentWillMount",
+    value: function componentWillMount() {
+
+      var self = this;
+      _axios2.default.get("/api/cities").then(function (response) {
+        var _self$props = self.props,
+            match = _self$props.match,
+            history = _self$props.history;
+
+        var city = response.data.filter(function (item) {
+          return item.slug == match.params.city;
+        });
+        self.setState({
+          citiesData: response.data,
+          selectedCity: city[0].title
+        }, function () {
+          console.log(self.state);
+        });
+      }).catch(function (error) {
+        console.log(error);
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
       return _react2.default.createElement(
@@ -158,9 +217,18 @@ var Header = function (_Component) {
             ),
             _react2.default.createElement(
               "div",
-              { className: "city" },
-              "San Francisco ",
-              _react2.default.createElement("i", { className: "fas fa-chevron-down" })
+              { className: "city-dropdown", onClick: this.clickedCityDropdown },
+              this.state.selectedCity,
+              _react2.default.createElement("i", { className: "fas fa-chevron-down " + (this.state.cityDropdown ? 'fa-chevron-up' : 'fa-chevron-down') }),
+              _react2.default.createElement(
+                "div",
+                { className: "scroll-area " + (this.state.cityDropdown ? 'active' : '') },
+                _react2.default.createElement(
+                  "ul",
+                  null,
+                  this.loopCities()
+                )
+              )
             )
           ),
           _react2.default.createElement(
@@ -209,7 +277,7 @@ var _reactDom = __webpack_require__(15);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _App = __webpack_require__(123);
+var _App = __webpack_require__(124);
 
 var _App2 = _interopRequireDefault(_App);
 
@@ -563,7 +631,7 @@ var _reactDom = __webpack_require__(15);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _axios = __webpack_require__(125);
+var _axios = __webpack_require__(69);
 
 var _axios2 = _interopRequireDefault(_axios);
 
@@ -599,7 +667,7 @@ var Home = function (_Component) {
     };
 
     _this.loopCategories = function () {
-
+      console.log();
       // if statement for data
       if (_this.state.categoriesData != '') {
         //return back the loop of categories
@@ -656,7 +724,7 @@ var Home = function (_Component) {
       }
 
       var self = this;
-      _axios2.default.get("/api/" + match.params.city + "/categories").then(function (response) {
+      _axios2.default.get("/api/" + match.params.city).then(function (response) {
         self.setState({
           categoriesData: response.data
         }, function () {

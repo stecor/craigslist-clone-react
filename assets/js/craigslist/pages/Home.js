@@ -25,7 +25,7 @@ componentDidMount(){
   }
 
   const self = this;
-  axios.get(`/api/${match.params.city}/categories`)
+  axios.get(`/api/${match.params.city}`)
   .then(function (response) {
     self.setState({
       categoriesData: response.data
@@ -52,7 +52,7 @@ componentDidMount(){
 
   loopCategories = () =>
   {
-
+    console.log();
     // if statement for data
     if(this.state.categoriesData != ''){
       //return back the loop of categories
