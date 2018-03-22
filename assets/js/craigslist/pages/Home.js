@@ -1,14 +1,30 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
+import Axios from "axios";
 
 export default class Home extends Component {
 
   constructor() {
     super();
     this.state = {
-
-    };
+      categoriesData: ''
+    }
   }
+
+  componentWillMount(){
+  const self = this;
+  Axios.get('/api/categories')
+  .then(function (response) {
+    self.setState({
+      categoriesData: response.data
+    }, () =>{
+      console.log(self.state);
+    })
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+}
   clickedBtn = () => {
     console.log("swag");
   };
@@ -21,35 +37,40 @@ export default class Home extends Component {
     })
   }
 
-  loopCategories = () =>{
-    let testArray = [1,2,3,4,5,6,7];
+  loopCategories = () =>
+  {
+    // if statement for data
+    if(this.state.categoriesData != ''){
+      //return back the loop of categories
+      return this.state.categoriesData.map((category,index) =>
+      {
+        // created a loop for the listings
+        const loopListings = () =>{
+          return category.listings.map((listing, index) => {
+            return(
+              <a href={`${category.title}/${listing.slug}`} className="link" key={index}>
+               {listing.name}
+              </a>
+            )
+          })
+        }
+        return(
+          <div className="categories" key={index}>
 
-    return testArray.map((item,index) => {
+            <div className="title">{category.title}</div>
 
-      return(
-        <div className="categories" key={index}>
+              <div className={`group-links ${(category.title == 'jobs' || category.title == 'personals' || category.title == 'housing') ? 'single-col' : ''}`}>
 
-          <div className="title">Community</div>
+                {loopListings()}
 
-            <div className="group-links">
-              <a href="#1" className="link">Community</a>
-              <a href="#1" className="link">Activities</a>
-              <a href="#1" className="link">Artists</a>
-              <a href="#1" className="link">Childcare</a>
-              <a href="#1" className="link">Classes</a>
-              <a href="#1" className="link">events</a>
+              </div>
 
-              <a href="#1" className="link">General</a>
-              <a href="#1" className="link">Groups</a>
-              <a href="#1" className="link">Local News</a>
-              <a href="#1" className="link">Lost + Found</a>
-              <a href="#1" className="link">Musicians</a>
-              <a href="#1" className="link">Pets</a>
-            </div>
-
-        </div>
-      )
-    })
+          </div>
+        )
+      })
+    }else{
+      return 'LOADING'
+    }
   }
 
   render() {
@@ -63,7 +84,7 @@ export default class Home extends Component {
 
         </section>
         <section className={"trending"}>
-          <input type="text" name="search" className="search" placeholder="Search classifieds, Housing, Discussions, Personals..."/>  
+          <input type="text" name="search" className="search" placeholder="Search classifieds, Housing, Discussions, Personals..."/>
           <div className="title">
             <i className="far fa-clock"></i>Trending Now
           </div>

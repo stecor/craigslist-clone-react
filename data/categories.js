@@ -1,4 +1,4 @@
-module.esports=[
+module.exports=[
   {
     title: "community",
 
@@ -302,12 +302,5 @@ module.esports=[
         slug: 'writing'
       }
     ]
-  },
-  {
-    title: "resumes",
-
-    listings: [
-
-    ]
-  },
+  }
 ]
