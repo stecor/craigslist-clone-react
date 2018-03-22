@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
-import Axios from "axios";
+import axios from "axios";
 
 export default class Home extends Component {
 
@@ -12,8 +12,20 @@ export default class Home extends Component {
   }
 
   componentWillMount(){
+
+}
+
+
+componentDidMount(){
+
+  const{match, history} = this.props
+
+  if (match.params.city === undefined){
+    history.push('/nyc');
+  }
+
   const self = this;
-  Axios.get('/api/categories')
+  axios.get(`/api/${match.params.city}/categories`)
   .then(function (response) {
     self.setState({
       categoriesData: response.data
@@ -25,6 +37,7 @@ export default class Home extends Component {
     console.log(error);
   });
 }
+
   clickedBtn = () => {
     console.log("swag");
   };
@@ -39,6 +52,7 @@ export default class Home extends Component {
 
   loopCategories = () =>
   {
+
     // if statement for data
     if(this.state.categoriesData != ''){
       //return back the loop of categories
