@@ -26,7 +26,8 @@ componentWillMount(){
       citiesData: response.data,
       selectedCity: city[0].title
     }, () =>{
-      console.log(self.state);
+      document.body.style.backgroundImage =`linear-gradient(135deg, rgba(75,52,247,0.8)0% rgba(166,39,230,0.8)100%),url(${city[0].img})`
+      //console.log(self.state);
     })
   })
   .catch(function (error) {

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
+import axios from "axios";
 
 export default class Category extends Component {
 
@@ -8,25 +9,43 @@ export default class Category extends Component {
       this.state = {};
     }
 
-    loopItems = () =>{
-      let testArray = [1,2,3,4,5,6,7];
+    componentWillMount(){
 
-      return testArray.map((item,index) => {
-
-        return(
-          <div className="item" key={index}>
-            <div className="image">
-              <div className="price">$8900</div>
-              image
-            </div>
-            <div className="details">
-              <h5>2011 Bmw m3</h5><i className="far fa-star" ></i><i className="material-icons ma-clear">&#xE14C;</i>
-              <h5>Gray on sale</h5>
-              <h6>Ridgewood</h6>
-            </div>
-          </div>
-        )
+      const{match, history} = this.props
+      const self = this;
+      axios.get(`/api/${match.params.city}/${match.params.category}`)
+      .then(function (response) {
+        self.setState({
+          itemsData: response.data,
+        }, () =>{
+          console.log("self.state : " + self.state);
+        })
       })
+      .catch(function (error) {
+        console.log("error axios: " + error);
+      });
+    }
+
+    loopItems = () =>{
+
+      if(this.state.itemsData != undefined){
+        return this.state.itemsData.map((item,index) => {
+
+          return(
+            <div className="item" key={index}>
+              <div className="image" style={{backgroundImage:`url('${item.images[0]}')`}}>
+                <div className="price">${item.price}</div>
+                image
+              </div>
+              <div className="details">
+                <h5>{item.title}</h5><i className="far fa-star" ></i><i className="material-icons ma-clear">&#xE14C;</i>
+                <h5>Gray on sale</h5>
+                <h6>{item.city}</h6>
+              </div>
+            </div>
+          )
+        })
+      }
     }
 
     showMakeModelDropdown=()=>{

@@ -113,7 +113,7 @@ var _reactDom = __webpack_require__(15);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _axios = __webpack_require__(69);
+var _axios = __webpack_require__(41);
 
 var _axios2 = _interopRequireDefault(_axios);
 
@@ -192,7 +192,8 @@ var Header = function (_Component) {
           citiesData: response.data,
           selectedCity: city[0].title
         }, function () {
-          console.log(self.state);
+          document.body.style.backgroundImage = "linear-gradient(135deg, rgba(75,52,247,0.8)0% rgba(166,39,230,0.8)100%),url(" + city[0].img + ")";
+          //console.log(self.state);
         });
       }).catch(function (error) {
         console.log(error);
@@ -307,6 +308,10 @@ var _reactDom = __webpack_require__(15);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
+var _axios = __webpack_require__(41);
+
+var _axios2 = _interopRequireDefault(_axios);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -324,50 +329,52 @@ var Category = function (_Component) {
     var _this = _possibleConstructorReturn(this, (Category.__proto__ || Object.getPrototypeOf(Category)).call(this));
 
     _this.loopItems = function () {
-      var testArray = [1, 2, 3, 4, 5, 6, 7];
 
-      return testArray.map(function (item, index) {
+      if (_this.state.itemsData != undefined) {
+        return _this.state.itemsData.map(function (item, index) {
 
-        return _react2.default.createElement(
-          "div",
-          { className: "item", key: index },
-          _react2.default.createElement(
+          return _react2.default.createElement(
             "div",
-            { className: "image" },
+            { className: "item", key: index },
             _react2.default.createElement(
               "div",
-              { className: "price" },
-              "$8900"
-            ),
-            "image"
-          ),
-          _react2.default.createElement(
-            "div",
-            { className: "details" },
-            _react2.default.createElement(
-              "h5",
-              null,
-              "2011 Bmw m3"
-            ),
-            _react2.default.createElement("i", { className: "far fa-star" }),
-            _react2.default.createElement(
-              "i",
-              { className: "material-icons ma-clear" },
-              "\uE14C"
+              { className: "image", style: { backgroundImage: "url('" + item.images[0] + "')" } },
+              _react2.default.createElement(
+                "div",
+                { className: "price" },
+                "$",
+                item.price
+              ),
+              "image"
             ),
             _react2.default.createElement(
-              "h5",
-              null,
-              "Gray on sale"
-            ),
-            _react2.default.createElement(
-              "h6",
-              null,
-              "Ridgewood"
+              "div",
+              { className: "details" },
+              _react2.default.createElement(
+                "h5",
+                null,
+                item.title
+              ),
+              _react2.default.createElement("i", { className: "far fa-star" }),
+              _react2.default.createElement(
+                "i",
+                { className: "material-icons ma-clear" },
+                "\uE14C"
+              ),
+              _react2.default.createElement(
+                "h5",
+                null,
+                "Gray on sale"
+              ),
+              _react2.default.createElement(
+                "h6",
+                null,
+                item.city
+              )
             )
-          )
-        );
-      });
+          );
+        });
+      }
     };
 
     _this.showMakeModelDropdown = function () {
@@ -427,12 +434,30 @@ var Category = function (_Component) {
   }
 
   _createClass(Category, [{
-    key: "render",
-    value: function render() {
+    key: "componentWillMount",
+    value: function componentWillMount() {
       var _props = this.props,
           match = _props.match,
-          location = _props.location,
           history = _props.history;
+
+      var self = this;
+      _axios2.default.get("/api/" + match.params.city + "/" + match.params.category).then(function (response) {
+        self.setState({
+          itemsData: response.data
+        }, function () {
+          console.log("self.state : " + self.state);
+        });
+      }).catch(function (error) {
+        console.log("error axios: " + error);
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _props2 = this.props,
+          match = _props2.match,
+          location = _props2.location,
+          history = _props2.history;
 
       return _react2.default.createElement(
         "div",
@@ -835,7 +860,7 @@ var _reactDom = __webpack_require__(15);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _axios = __webpack_require__(69);
+var _axios = __webpack_require__(41);
 
 var _axios2 = _interopRequireDefault(_axios);
 
