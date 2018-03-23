@@ -13,6 +13,12 @@
     border-top: 2px solid gray;
   }
 
+  .make-model-comp{
+    display: flex;
+    flex-direction:row;
+    flex-wrap:nowrap;
+  }
+
   .form-group{
     display: flex;
     flex-direction: column;
@@ -36,7 +42,6 @@
     }
 
     &.button{
-      display: flex;
       flex-direction: row;
       align-items: flex-end;
     }

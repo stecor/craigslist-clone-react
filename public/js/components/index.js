@@ -79,7 +79,7 @@ var App = function (_Component) {
           _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _Home2.default }),
           _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/:city', component: _Home2.default }),
           _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/:city/:category', component: _Category2.default }),
-          _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/:city/:category/:listings', component: _Listings2.default }),
+          _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/:city/:category/:listings', component: _Category2.default }),
           _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/:city/:category/:listings/:details', component: _Details2.default })
         )
       );
@@ -323,6 +323,105 @@ var Category = function (_Component) {
 
     var _this = _possibleConstructorReturn(this, (Category.__proto__ || Object.getPrototypeOf(Category)).call(this));
 
+    _this.loopItems = function () {
+      var testArray = [1, 2, 3, 4, 5, 6, 7];
+
+      return testArray.map(function (item, index) {
+
+        return _react2.default.createElement(
+          "div",
+          { className: "item", key: index },
+          _react2.default.createElement(
+            "div",
+            { className: "image" },
+            _react2.default.createElement(
+              "div",
+              { className: "price" },
+              "$8900"
+            ),
+            "image"
+          ),
+          _react2.default.createElement(
+            "div",
+            { className: "details" },
+            _react2.default.createElement(
+              "h5",
+              null,
+              "2011 Bmw m3"
+            ),
+            _react2.default.createElement("i", { className: "far fa-star" }),
+            _react2.default.createElement(
+              "i",
+              { className: "material-icons ma-clear" },
+              "\uE14C"
+            ),
+            _react2.default.createElement(
+              "h5",
+              null,
+              "Gray on sale"
+            ),
+            _react2.default.createElement(
+              "h6",
+              null,
+              "Ridgewood"
+            )
+          )
+        );
+      });
+    };
+
+    _this.showMakeModelDropdown = function () {
+      var _this$props = _this.props,
+          match = _this$props.match,
+          location = _this$props.location,
+          history = _this$props.history;
+
+
+      if (match.params.listings == 'cars-and-trucks') {
+
+        return _react2.default.createElement(
+          "div",
+          { className: "make-model-comp" },
+          _react2.default.createElement(
+            "div",
+            { className: "form-group make" },
+            _react2.default.createElement(
+              "label",
+              { htmlFor: "make" },
+              "Make"
+            ),
+            _react2.default.createElement(
+              "select",
+              { name: "make", className: "make" },
+              _react2.default.createElement(
+                "option",
+                { value: "bmw" },
+                "bmw"
+              )
+            )
+          ),
+          _react2.default.createElement(
+            "div",
+            { className: "form-group model" },
+            _react2.default.createElement(
+              "label",
+              { htmlFor: "model" },
+              "Model"
+            ),
+            _react2.default.createElement(
+              "select",
+              { name: "model", className: "model" },
+              _react2.default.createElement(
+                "option",
+                { value: "bmw" },
+                "bmw"
+              )
+            )
+          )
+        );
+      }
+    };
+
     _this.state = {};
     return _this;
   }
@@ -337,12 +436,117 @@ var Category = function (_Component) {
 
       return _react2.default.createElement(
         "div",
-        { className: "category" },
+        { className: "listings-page" },
         _react2.default.createElement(
           "div",
           { className: "container" },
-          "this category is ",
-          match.params.category
+          _react2.default.createElement(
+            "section",
+            { id: "filter" },
+            _react2.default.createElement(
+              "div",
+              { className: "form-group price" },
+              _react2.default.createElement(
+                "label",
+                { htmlFor: "price" },
+                "Price"
+              ),
+              _react2.default.createElement(
+                "div",
+                { className: "min-max" },
+                _react2.default.createElement(
+                  "select",
+                  { name: "min-price", className: "min-price" },
+                  _react2.default.createElement(
+                    "option",
+                    { value: "0" },
+                    "0"
+                  )
+                ),
+                _react2.default.createElement(
+                  "select",
+                  { name: "max-price", className: "max-price" },
+                  _react2.default.createElement(
+                    "option",
+                    { value: "1000" },
+                    "1000"
+                  )
+                )
+              )
+            ),
+            this.showMakeModelDropdown(),
+            _react2.default.createElement(
+              "div",
+              { className: "form-group button" },
+              _react2.default.createElement(
+                "div",
+                { className: "primary-btn" },
+                "Update"
+              ),
+              _react2.default.createElement(
+                "div",
+                { className: "reset-btn" },
+                "Reset"
+              )
+            )
+          )
+        ),
+        _react2.default.createElement(
+          "section",
+          { id: "list-view" },
+          _react2.default.createElement(
+            "div",
+            { className: "container" },
+            _react2.default.createElement(
+              "div",
+              { className: "white-box" },
+              _react2.default.createElement(
+                "section",
+                { className: "change-view" },
+                _react2.default.createElement(
+                  "div",
+                  { className: "form-group view-dropdown" },
+                  _react2.default.createElement(
+                    "select",
+                    { name: "select-view", className: "select-view" },
+                    _react2.default.createElement(
+                      "option",
+                      { value: "gallery" },
+                      "Gallery View"
+                    ),
+                    _react2.default.createElement(
+                      "option",
+                      { value: "list" },
+                      "List View"
+                    ),
+                    _react2.default.createElement(
+                      "option",
+                      { value: "thumb" },
+                      "Thumb View"
+                    )
+                  )
+                ),
+                _react2.default.createElement(
+                  "div",
+                  { className: "form-group sort-dropdown" },
+                  _react2.default.createElement(
+                    "select",
+                    { name: "sort-dropdown", className: "sort-dropdown" },
+                    _react2.default.createElement(
+                      "option",
+                      { value: "newest" },
+                      "Newest"
+                    )
+                  )
+                )
+              ),
+              _react2.default.createElement(
+                "section",
+                { className: "all-items" },
+                this.loopItems()
+              )
+            )
+          )
         )
       );
     }
@@ -667,8 +871,11 @@ var Home = function (_Component) {
     };
 
     _this.loopCategories = function () {
-      console.log();
+      var _this$props = _this.props,
+          match = _this$props.match,
+          history = _this$props.history;
       // if statement for data
+
       if (_this.state.categoriesData != '') {
         //return back the loop of categories
         return _this.state.categoriesData.map(function (category, index) {
@@ -686,8 +893,8 @@ var Home = function (_Component) {
             "div",
             { className: "categories", key: index },
             _react2.default.createElement(
-              "div",
-              { className: "title" },
+              "a",
+              { href: "/" + match.params.city + "/" + category.title, className: "title" },
               category.title
             ),
             _react2.default.createElement(
@@ -703,7 +910,8 @@ var Home = function (_Component) {
     };
 
     _this.state = {
-      categoriesData: ''
+      categoriesData: []
+
     };
     return _this;
   }
@@ -718,8 +926,7 @@ var Home = function (_Component) {
           match = _props.match,
           history = _props.history;
 
-
-      if (match.params.city === undefined) {
+      if (match.params.city == undefined) {
         history.push('/nyc');
       }
 
@@ -728,10 +935,10 @@ var Home = function (_Component) {
         self.setState({
           categoriesData: response.data
         }, function () {
-          console.log(self.state);
+          console.log("self.state : " + self.state);
         });
       }).catch(function (error) {
-        console.log(error);
+        console.log("error axios: " + error);
       });
     }
   }, {

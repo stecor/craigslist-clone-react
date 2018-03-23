@@ -42,7 +42,6 @@ app.get('/api/:city/:categories/:listing/:item', function(req,res){
 });
 
 
-
 app.get('*', function(req,res){
   res.sendFile(__dirname + '/public/index.html');
 });

@@ -7,11 +7,14 @@ export default class Home extends Component {
   constructor() {
     super();
     this.state = {
-      categoriesData: ''
+      categoriesData: [],
+
     }
   }
 
   componentWillMount(){
+
+
 
 }
 
@@ -19,8 +22,7 @@ export default class Home extends Component {
 componentDidMount(){
 
   const{match, history} = this.props
-
-  if (match.params.city === undefined){
+  if (match.params.city == undefined){
     history.push('/nyc');
   }
 
@@ -28,13 +30,13 @@ componentDidMount(){
   axios.get(`/api/${match.params.city}`)
   .then(function (response) {
     self.setState({
-      categoriesData: response.data
+      categoriesData: response.data,
     }, () =>{
-      console.log(self.state);
+      console.log("self.state : " + self.state);
     })
   })
   .catch(function (error) {
-    console.log(error);
+    console.log("error axios: " + error);
   });
 }
 
@@ -52,7 +54,7 @@ componentDidMount(){
 
   loopCategories = () =>
   {
-    console.log();
+    const {match,history}=this.props
     // if statement for data
     if(this.state.categoriesData != ''){
       //return back the loop of categories
@@ -71,7 +73,8 @@ componentDidMount(){
         return(
           <div className="categories" key={index}>
 
-            <div className="title">{category.title}</div>
+          <a href={`/${match.params.city}/${category.title}`} className="title" >{category.title}</a>
+
 
               <div className={`group-links ${(category.title == 'jobs' || category.title == 'personals' || category.title == 'housing') ? 'single-col' : ''}`}>
 
