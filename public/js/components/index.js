@@ -314,6 +314,8 @@ var _axios2 = _interopRequireDefault(_axios);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -329,16 +331,17 @@ var Category = function (_Component) {
     var _this = _possibleConstructorReturn(this, (Category.__proto__ || Object.getPrototypeOf(Category)).call(this));
 
     _this.loopItems = function () {
-
       if (_this.state.itemsData != undefined) {
         return _this.state.itemsData.map(function (item, index) {
-
           return _react2.default.createElement(
             "div",
             { className: "item", key: index },
             _react2.default.createElement(
               "div",
-              { className: "image", style: { backgroundImage: "url('" + item.images[0] + "')" } },
+              {
+                className: "image",
+                style: { backgroundImage: "url('" + item.images[0] + "')" }
+              },
               _react2.default.createElement(
                 "div",
                 { className: "price" },
@@ -384,8 +387,7 @@ var Category = function (_Component) {
           history = _this$props.history;
 
 
-      if (match.params.listings == 'cars-and-trucks') {
-
+      if (match.params.listings == "cars-and-trucks") {
         return _react2.default.createElement(
           "div",
           { className: "make-model-comp" },
@@ -399,11 +401,21 @@ var Category = function (_Component) {
             ),
             _react2.default.createElement(
               "select",
-              { name: "make", className: "make" },
+              { name: "make", className: "make", onChange: _this.handleChange },
               _react2.default.createElement(
                 "option",
                 { value: "bmw" },
                 "bmw"
+              ),
+              _react2.default.createElement(
+                "option",
+                { value: "benz" },
+                "benz"
+              ),
+              _react2.default.createElement(
+                "option",
+                { value: "honda" },
+                "honda"
               )
             )
           ),
@@ -417,11 +429,16 @@ var Category = function (_Component) {
             ),
             _react2.default.createElement(
               "select",
-              { name: "model", className: "model" },
+              { name: "model", className: "model", onChange: _this.handleChange },
               _react2.default.createElement(
                 "option",
-                { value: "bmw" },
-                "bmw"
+                { value: "x6" },
+                "x6"
+              ),
+              _react2.default.createElement(
+                "option",
+                { value: "cseries" },
+                "cseries"
               )
             )
           )
@@ -429,7 +446,21 @@ var Category = function (_Component) {
       }
     };
 
-    _this.state = {};
+    _this.handleChange = function (event) {
+      var name = event.target.name;
+      var value = event.target.type == "checkbox" ? event.target.checked : event.target.value;
+
+      _this.setState(_defineProperty({}, name, value), function () {
+        console.log(_this.state);
+      });
+    };
+
+    _this.state = {
+      min_price: 0,
+      max_price: 10000,
+      sort: "newest",
+      select_view: "gallery"
+    };
     return _this;
   }
 
@@ -478,23 +509,53 @@ var Category = function (_Component) {
               ),
               _react2.default.createElement(
                 "div",
-                { className: "min-max" },
+                { className: "min_max" },
                 _react2.default.createElement(
                   "select",
-                  { name: "min-price", className: "min-price" },
+                  {
+                    name: "min_price",
+                    className: "min-price",
+                    onChange: this.handleChange,
+                    value: this.state.min_price
+                  },
                   _react2.default.createElement(
                     "option",
                     { value: "0" },
                     "0"
-                  )
-                ),
-                _react2.default.createElement(
-                  "select",
-                  { name: "max-price", className: "max-price" },
+                  ),
                   _react2.default.createElement(
                     "option",
                     { value: "1000" },
                     "1000"
+                  ),
+                  _react2.default.createElement(
+                    "option",
+                    { value: "5000" },
+                    "5000"
+                  )
+                ),
+                _react2.default.createElement(
+                  "select",
+                  {
+                    name: "max_price",
+                    className: "max-price",
+                    onChange: this.handleChange,
+                    value: this.state.max_price
+                  },
+                  _react2.default.createElement(
+                    "option",
+                    { value: "1000" },
+                    "1000"
+                  ),
+                  _react2.default.createElement(
+                    "option",
+                    { value: "5000" },
+                    "5000"
+                  ),
+                  _react2.default.createElement(
+                    "option",
+                    { value: "10000" },
+                    "10000"
                   )
                 )
               )
@@ -533,7 +594,12 @@ var Category = function (_Component) {
                   { className: "form-group view-dropdown" },
                   _react2.default.createElement(
                     "select",
-                    { name: "select-view", className: "select-view" },
+                    {
+                      name: "select-view",
+                      className: "select-view",
+                      onChange: this.handleChange,
+                      value: this.state.select_view
+                    },
                     _react2.default.createElement(
                       "option",
                       { value: "gallery" },
@@ -556,11 +622,21 @@ var Category = function (_Component) {
                   { className: "form-group sort-dropdown" },
                   _react2.default.createElement(
                     "select",
-                    { name: "sort-dropdown", className: "sort-dropdown" },
+                    {
+                      name: "sort",
+                      className: "sort-dropdown",
+                      onChange: this.handleChange,
+                      value: this.state.sort
+                    },
                     _react2.default.createElement(
                       "option",
                       { value: "newest" },
                       "Newest"
+                    ),
+                    _react2.default.createElement(
+                      "option",
+                      { value: "oldests" },
+                      "Oldest"
                     )
                   )
                 )
@@ -909,7 +985,7 @@ var Home = function (_Component) {
             return category.listings.map(function (listing, index) {
               return _react2.default.createElement(
                 "a",
-                { href: category.title + "/" + listing.slug, className: "link", key: index },
+                { href: match.params.city + "/" + category.title + "/" + listing.slug, className: "link", key: index },
                 listing.name
               );
             });
