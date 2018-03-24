@@ -1,6 +1,6 @@
 webpackJsonp([0],{
 
-/***/ 124:
+/***/ 125:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20,25 +20,25 @@ var _reactDom = __webpack_require__(15);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _reactRouterDom = __webpack_require__(270);
+var _reactRouterDom = __webpack_require__(66);
 
-var _Header = __webpack_require__(143);
+var _Header = __webpack_require__(144);
 
 var _Header2 = _interopRequireDefault(_Header);
 
-var _Home = __webpack_require__(147);
+var _Home = __webpack_require__(148);
 
 var _Home2 = _interopRequireDefault(_Home);
 
-var _Listings = __webpack_require__(148);
+var _Listings = __webpack_require__(149);
 
 var _Listings2 = _interopRequireDefault(_Listings);
 
-var _Category = __webpack_require__(145);
+var _Category = __webpack_require__(146);
 
 var _Category2 = _interopRequireDefault(_Category);
 
-var _Details = __webpack_require__(146);
+var _Details = __webpack_require__(147);
 
 var _Details2 = _interopRequireDefault(_Details);
 
@@ -93,7 +93,7 @@ exports.default = App;
 
 /***/ }),
 
-/***/ 143:
+/***/ 144:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -116,6 +116,8 @@ var _reactDom2 = _interopRequireDefault(_reactDom);
 var _axios = __webpack_require__(41);
 
 var _axios2 = _interopRequireDefault(_axios);
+
+var _reactRouterDom = __webpack_require__(66);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -202,6 +204,10 @@ var Header = function (_Component) {
   }, {
     key: "render",
     value: function render() {
+      var _props = this.props,
+          match = _props.match,
+          history = _props.history;
+
       return _react2.default.createElement(
         "div",
         { className: "container" },
@@ -212,8 +218,8 @@ var Header = function (_Component) {
             "div",
             { className: "left-menu" },
             _react2.default.createElement(
-              "div",
-              { className: "logo" },
+              _reactRouterDom.Link,
+              { to: "/" + match.params.city, className: "logo" },
               "Craigslist"
             ),
             _react2.default.createElement(
@@ -238,7 +244,7 @@ var Header = function (_Component) {
             _react2.default.createElement(
               "div",
               { className: "user-img" },
-              _react2.default.createElement("img", { src: "https://png.icons8.com/ios/2x/user-male-circle-filled.png", alt: "user" })
+              _react2.default.createElement("i", { className: "far fa-user" })
             ),
             _react2.default.createElement(
               "div",
@@ -264,7 +270,7 @@ exports.default = Header;
 
 /***/ }),
 
-/***/ 144:
+/***/ 145:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -278,7 +284,7 @@ var _reactDom = __webpack_require__(15);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _App = __webpack_require__(124);
+var _App = __webpack_require__(125);
 
 var _App2 = _interopRequireDefault(_App);
 
@@ -288,7 +294,7 @@ _reactDom2.default.render(_react2.default.createElement(_App2.default, null), do
 
 /***/ }),
 
-/***/ 145:
+/***/ 146:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -311,6 +317,10 @@ var _reactDom2 = _interopRequireDefault(_reactDom);
 var _axios = __webpack_require__(41);
 
 var _axios2 = _interopRequireDefault(_axios);
+
+var _queryString = __webpack_require__(185);
+
+var _queryString2 = _interopRequireDefault(_queryString);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -455,6 +465,22 @@ var Category = function (_Component) {
       });
     };
 
+    _this.submitFilters = function () {
+      var _this$props2 = _this.props,
+          match = _this$props2.match,
+          location = _this$props2.location,
+          history = _this$props2.history;
+      var _this$state = _this.state,
+          min_price = _this$state.min_price,
+          max_price = _this$state.max_price,
+          sort = _this$state.sort,
+          select_view = _this$state.select_view;
+
+
+      document.location.href = "/" + match.params.city + "/" + match.params.category + "?min_price=" + min_price + "&max_price=" + max_price + "&sort=" + sort + "&select_view=" + select_view;
+      var queryParams = _queryString2.default.parse(_this.props.location.search);
+    };
+
     _this.state = {
       min_price: 0,
       max_price: 10000,
@@ -472,15 +498,35 @@ var Category = function (_Component) {
           history = _props.history;
 
       var self = this;
-      _axios2.default.get("/api/" + match.params.city + "/" + match.params.category).then(function (response) {
-        self.setState({
-          itemsData: response.data
-        }, function () {
-          console.log("self.state : " + self.state);
+
+      console.log();
+      var queryParams = _queryString2.default.parse(this.props.location.search);
+      var min_price = queryParams.min_price,
+          max_price = queryParams.max_price,
+          sort = queryParams.sort,
+          select_view = queryParams.select_view;
+
+      if (queryParams.min_price != undefined) {
+        _axios2.default.get("/api/" + match.params.city + "/" + match.params.category + "?min_price=" + min_price + "&max_price=" + max_price + "&sort=" + sort + "&select_view=" + select_view).then(function (response) {
+          self.setState({
+            itemsData: response.data
+          }, function () {
+            console.log("self.state : " + self.state);
+          });
+        }).catch(function (error) {
+          console.log("error axios: " + error);
         });
-      }).catch(function (error) {
-        console.log("error axios: " + error);
-      });
+      } else {
+        _axios2.default.get("/api/" + match.params.city + "/" + match.params.category).then(function (response) {
+          self.setState({
+            itemsData: response.data
+          }, function () {
+            console.log("self.state : " + self.state);
+          });
+        }).catch(function (error) {
+          console.log("error axios: " + error);
+        });
+      }
     }
   }, {
     key: "render",
@@ -532,6 +578,51 @@ var Category = function (_Component) {
                     "option",
                     { value: "5000" },
                     "5000"
+                  ),
+                  _react2.default.createElement(
+                    "option",
+                    { value: "10000" },
+                    "10000"
+                  ),
+                  _react2.default.createElement(
+                    "option",
+                    { value: "20000" },
+                    "20000"
+                  ),
+                  _react2.default.createElement(
+                    "option",
+                    { value: "30000" },
+                    "30000"
+                  ),
+                  _react2.default.createElement(
+                    "option",
+                    { value: "40000" },
+                    "40000"
+                  ),
+                  _react2.default.createElement(
+                    "option",
+                    { value: "50000" },
+                    "50000"
+                  ),
+                  _react2.default.createElement(
+                    "option",
+                    { value: "60000" },
+                    "60000"
+                  ),
+                  _react2.default.createElement(
+                    "option",
+                    { value: "70000" },
+                    "70000"
+                  ),
+                  _react2.default.createElement(
+                    "option",
+                    { value: "80000" },
+                    "80000"
+                  ),
+                  _react2.default.createElement(
+                    "option",
+                    { value: "90000" },
+                    "90000"
                   )
                 ),
                 _react2.default.createElement(
@@ -544,11 +635,6 @@ var Category = function (_Component) {
                   },
                   _react2.default.createElement(
                     "option",
-                    { value: "1000" },
-                    "1000"
-                  ),
-                  _react2.default.createElement(
-                    "option",
                     { value: "5000" },
                     "5000"
                   ),
@@ -556,6 +642,51 @@ var Category = function (_Component) {
                     "option",
                     { value: "10000" },
                     "10000"
+                  ),
+                  _react2.default.createElement(
+                    "option",
+                    { value: "20000" },
+                    "20000"
+                  ),
+                  _react2.default.createElement(
+                    "option",
+                    { value: "30000" },
+                    "30000"
+                  ),
+                  _react2.default.createElement(
+                    "option",
+                    { value: "40000" },
+                    "40000"
+                  ),
+                  _react2.default.createElement(
+                    "option",
+                    { value: "50000" },
+                    "50000"
+                  ),
+                  _react2.default.createElement(
+                    "option",
+                    { value: "60000" },
+                    "60000"
+                  ),
+                  _react2.default.createElement(
+                    "option",
+                    { value: "70000" },
+                    "70000"
+                  ),
+                  _react2.default.createElement(
+                    "option",
+                    { value: "80000" },
+                    "80000"
+                  ),
+                  _react2.default.createElement(
+                    "option",
+                    { value: "90000" },
+                    "90000"
+                  ),
+                  _react2.default.createElement(
+                    "option",
+                    { value: "100000" },
+                    "100000"
                   )
                 )
               )
@@ -566,7 +697,7 @@ var Category = function (_Component) {
               { className: "form-group button" },
               _react2.default.createElement(
                 "div",
-                { className: "primary-btn" },
+                { className: "primary-btn", onClick: this.submitFilters },
                 "Update"
               ),
               _react2.default.createElement(
@@ -594,12 +725,7 @@ var Category = function (_Component) {
                   { className: "form-group view-dropdown" },
                   _react2.default.createElement(
                     "select",
-                    {
-                      name: "select-view",
-                      className: "select-view",
-                      onChange: this.handleChange,
-                      value: this.state.select_view
-                    },
+                    { name: "select_view", className: "select-view", onChange: this.handleChange, value: this.state.select_view },
                     _react2.default.createElement(
                       "option",
                       { value: "gallery" },
@@ -660,7 +786,7 @@ exports.default = Category;
 
 /***/ }),
 
-/***/ 146:
+/***/ 147:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -680,7 +806,7 @@ var _reactDom = __webpack_require__(15);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _Gallery = __webpack_require__(149);
+var _Gallery = __webpack_require__(150);
 
 var _Gallery2 = _interopRequireDefault(_Gallery);
 
@@ -916,7 +1042,7 @@ exports.default = Details;
 
 /***/ }),
 
-/***/ 147:
+/***/ 148:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -935,6 +1061,8 @@ var _react2 = _interopRequireDefault(_react);
 var _reactDom = __webpack_require__(15);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
+
+var _reactRouterDom = __webpack_require__(66);
 
 var _axios = __webpack_require__(41);
 
@@ -984,8 +1112,8 @@ var Home = function (_Component) {
           var loopListings = function loopListings() {
             return category.listings.map(function (listing, index) {
               return _react2.default.createElement(
-                "a",
-                { href: match.params.city + "/" + category.title + "/" + listing.slug, className: "link", key: index },
+                _reactRouterDom.Link,
+                { to: "/" + match.params.city + "/" + category.title + "/" + listing.slug, key: index },
                 listing.name
               );
             });
@@ -1091,7 +1219,7 @@ exports.default = Home;
 
 /***/ }),
 
-/***/ 148:
+/***/ 149:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1364,7 +1492,7 @@ exports.default = Listings;
 
 /***/ }),
 
-/***/ 149:
+/***/ 150:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1489,4 +1617,4 @@ exports.default = Gallery;
 
 /***/ })
 
-},[144]);
+},[145]);
